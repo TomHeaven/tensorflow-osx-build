@@ -7,7 +7,7 @@ Unfortunately, the Tensorflow team stops releasing binary package for Mac OS wit
 
 # Releases
 
-| FileName | Tensorflow  | CUDA | CUDNN | Compute Compatibility | Compilation Time |
+| FileName | Tensorflow  | CUDA | CUDNN | Compute Capability | Compilation Time |
 |:--:|:--:|:--:|:--:|:--:|:--:|
 | tensorflow-1.4.0.dev0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.4.0.dev0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2017-09-15 |
 | tensorflow-1.4.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.4.0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2017-11-29 |
