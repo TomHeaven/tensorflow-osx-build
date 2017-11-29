@@ -33,9 +33,9 @@ At last, uncompress and install the binary package from this project:
 最后，解压并安装：
 
 ```
-cat tensorflow-1.4.0.dev0-cp27-cp27m-macosx_10_12_intel.whl.zip.* > tensorflow-1.4.0.dev0-cp27-cp27m-macosx_10_12_intel.whl.zip
-unzip tensorflow-1.4.0.dev0-cp27-cp27m-macosx_10_12_intel.whl.zip
-pip install tensorflow-tensorflow-1.4.0.dev0-cp27-cp27m-macosx_10_12_intel.whl
+cat tensorflow* > tensorflow.whl.zip
+unzip tensorflow.whl.zip
+pip install tensorflow*.whl
 ```
 
 Enjoy!
