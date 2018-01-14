@@ -15,9 +15,15 @@ Unfortunately, the Tensorflow team stops releasing binary package for Mac OS wit
 
 # Installation
 
-First, ensure your CUDA driver and cudnn is installed properly.
+First, ensure your CUDA driver and cudnn is installed properly, and copy dependencies in folder `usr_local_lib` to path `/usr/local/lib`.
 
-首先，确保CUDA驱动和cudnn正确安装。
+首先，确保CUDA驱动和cudnn正确安装,并且将文件夹`usr_local_lib`中的依赖项复制到路径`/usr/local/lib`。
+
+```
+sudo mkdir /usr/local
+sudo mkdir /usr/local/lib
+sudo copy usr_local_lib/* /usr/local/lib/
+```
 
 Second, uninstall the previous tensorflow installtion by
 
