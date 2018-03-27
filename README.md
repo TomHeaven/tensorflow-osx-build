@@ -1,19 +1,25 @@
 # Tensorflow OSX Build
 
-Unfortunately, the Tensorflow team stops releasing binary package for Mac OS with CUDA support since Tensorflow 1.2. This project provides off-the-shelf binary packages.
+Unfortunately, the Tensorflow team stops releasing binary package for Mac OS with CUDA support since Tensorflow 1.2. This project provides off-the-shelf binary packages. ``Both Python 2.7 and 3.6 are supported now!``
 
-很不幸，Tensorflow团队自从1.2版本开始停止了发布 Mac OS CUDA版。本项目提供 Mac OS 上编译好、可直接安装的Tensorflow CUDA版本。
+很不幸，Tensorflow团队自从1.2版本开始停止了发布 Mac OS CUDA版。本项目提供 Mac OS 上编译好、可直接安装的Tensorflow CUDA版本。``本项目同时支持Python 2.7 和 3.6 了！``
 
 
 # Releases
 
 | FileName | Tensorflow  | CUDA | CUDNN | Compute Capability | Compilation Time |
 |:--:|:--:|:--:|:--:|:--:|:--:|
-| tensorflow-1.4.0.dev0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.4.0.dev0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2017-09-15 |
+| tensorflow-1.6.0-cp36-cp36m-macosx\_10\_12\_intel.whl | 1.6.0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2018-03-27 |
+| tensorflow-1.6.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.6.0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2018-03-27 |
 | tensorflow-1.4.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.4.0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2017-11-29 |
+| tensorflow-1.4.0.dev0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.4.0.dev0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2017-09-15 |
+
+You can find older releases in the [releases page](https://github.com/TomHeaven/tensorflow-osx-build/releases).
+
+你可以在[Releases页面](https://github.com/TomHeaven/tensorflow-osx-build/releases)找到以前发布的版本。
 
 
-# Installation
+# Installation for Python 2.7
 
 First, ensure your CUDA driver and cudnn is installed properly, and copy dependencies in folder `usr_local_lib` to path `/usr/local/lib`.
 
@@ -43,6 +49,14 @@ cat tensorflow* > tensorflow.whl.zip
 unzip tensorflow.whl.zip
 pip install tensorflow*.whl
 ```
+
+# Installation for Python 3.6
+
+Install Python 3.6 from Homebrew first, and then simply follow the guide for Python 2.7 and replace `pip` command with `pip3` and `python` with `python3`.
+
+首先从Homebrew安装Python 3.6，然后按照Python 2.7的安装步骤执行，注意将`pip`替换为`pip3`，并用`python3`启动`python`。
+
+
 
 Enjoy!
 
