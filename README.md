@@ -9,8 +9,8 @@ Unfortunately, the Tensorflow team stops releasing binary package for Mac OS wit
 
 | FileName | Tensorflow  | CUDA | CUDNN | Compute Capability | Compilation Time |
 |:--:|:--:|:--:|:--:|:--:|:--:|
-| tensorflow-1.6.0-cp36-cp36m-macosx\_10\_12\_intel.whl | 1.6.0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2018-03-27 |
-| tensorflow-1.6.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.6.0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2018-03-27 |
+| tensorflow-1.6.0-cp36-cp36m-macosx\_10\_12\_intel.whl | 1.6.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-04-23 |
+| tensorflow-1.6.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.6.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-04-23 |
 | tensorflow-1.4.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.4.0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2017-11-29 |
 | tensorflow-1.4.0.dev0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.4.0.dev0 | 8.0 | 6 | 3.0,3.5,5.2,6.1 | 2017-09-15 |
 
@@ -28,7 +28,7 @@ First, ensure your CUDA driver and cudnn is installed properly, and copy depende
 ```
 sudo mkdir /usr/local
 sudo mkdir /usr/local/lib
-sudo copy usr_local_lib/* /usr/local/lib/
+sudo cp usr_local_lib/* /usr/local/lib/
 ```
 
 Second, uninstall the previous tensorflow installtion by
