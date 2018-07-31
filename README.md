@@ -72,3 +72,9 @@ Enjoy!
 # Source Code
 
 Source code from: [https://github.com/tensorflow/tensorflow](https://github.com/tensorflow/tensorflow)
+
+# Related Links
+
+If you need Pytorch builds for osx, go to this page: [https://github.com/TomHeaven/pytorch-osx-build](https://github.com/TomHeaven/pytorch-osx-build)
+
+如果你需要Pytorch包，请看这个页面：[https://github.com/TomHeaven/pytorch-osx-build](https://github.com/TomHeaven/pytorch-osx-build)
