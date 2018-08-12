@@ -80,6 +80,9 @@ Symbol not found: _ncclAllReduce
 Replace the `_nccl_ops.so` file in your installation directory with the file in `patch` folder. An example installation directory of the file is `/Library/Python/2.7/site-packages/tensorflow/contrib/nccl/python/ops/` for Python 2.7  and `/usr/local/lib/python3.6/site-packages/tensorflow/contrib/nccl/python/ops/` for for Python 3.6.
 
 
+1.8版本有一个NCCL相关的BUG，如果你遇到了此BUG，请用Patch文件夹内的`_nccl_ops.so`替换安装目录下的同名文件。具体路径参考英文表述。
+
+
 # Source Code
 
 Source code from: [https://github.com/tensorflow/tensorflow](https://github.com/tensorflow/tensorflow)
