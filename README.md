@@ -70,6 +70,15 @@ Enjoy!
 
 开始使用新版Tensorflow吧!
 
+# Patch
+There is a NCCL related BUG affecting Release 1.8. If you encounter such an error:
+
+```
+Symbol not found: _ncclAllReduce
+```
+
+Replace the `_nccl_ops.so` file in your installation directory with the file in `patch` folder. An example installation directory of the file is `/Library/Python/2.7/site-packages/tensorflow/contrib/nccl/python/ops/` for Python 2.7  and `/usr/local/lib/python3.6/site-packages/tensorflow/contrib/nccl/python/ops/` for for Python 3.6.
+
 
 # Source Code
 
