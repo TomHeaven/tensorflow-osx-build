@@ -47,16 +47,15 @@ Second, uninstall the previous tensorflow installtion by
 
 ```
 pip uninstall tensorflow
-pip uninstall tensorflow-gpu
+pip uninstall tensorflow-gpu # for early version with offical support
 ```
 
-At last, uncompress and install the binary package from this project:
+At last, download binary packages from [Releases](https://github.com/TomHeaven/tensorflow-osx-build/releases) page and install
 
-最后，解压并安装：
+最后，从[Releases页面](https://github.com/TomHeaven/tensorflow-osx-build/releases)下载并安装：
 
 ```
-cat tensorflow* > tensorflow.whl.zip
-unzip tensorflow.whl.zip
+
 pip install tensorflow*.whl
 ```
 
