@@ -71,6 +71,11 @@ Enjoy!
 
 开始使用新版Tensorflow吧!
 
+# Build Instrctions
+If you want to build your own wheel packages, refer to the following instrctions:
+
++ [Build instractions v1.10.0] (https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_instructions_1.10.md)
+
 # Patch
 There is a NCCL related BUG affecting Release 1.8. If you encounter such an error:
 
