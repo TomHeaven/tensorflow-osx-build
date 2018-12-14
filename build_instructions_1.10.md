@@ -8,7 +8,9 @@ Project page: [https://github.com/TomHeaven/tensorflow-osx-build](https://github
 
 Note patches for every release of Tensorflow is a bit different! So the instructions work for v1.10.0 only.
 
-First make sure your XCode 8 or 9, CUDA 9.0 SDK and CUDNN 7 are properly installed, and Internet connection is also required. You need to install Python3 using `Homebrew` if you need to compile for Python3.
+First make sure your XCode 8, CUDA 9.0 SDK and CUDNN 7 are properly installed, and Internet connection is also required. You need to install Python3 using `Homebrew` if you need to compile for Python3.
+
+If running on Mac OS High Sierra(10.13), you need to keep both XCode 8 (CUDA 9 SDK only supports this version) and XCode 9 (Homebrew requires this version) and switch between them by renaming.
 
 I've found that build against CUDA 9.2 does not work properly, which keeps reporting `CUDA OUT OF MEMORY ERROR` and my test program is easily killed by operating system. If you have interests, feel free to try.
 

@@ -13,14 +13,11 @@ Unfortunately, the Tensorflow team stops releasing binary package for Mac OS wit
 
 | FileName | Tensorflow  | CUDA | CUDNN | Compute Capability | Compilation Time |
 |:--:|:--:|:--:|:--:|:--:|:--:|
+| tensorflow-1.12.0-cp37-cp37m-macosx\_10\_13\_x86_64.whl | 1.12.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-12-14 |
+| tensorflow-1.12.0-cp36-cp36m-macosx\_10\_12\_x86_64.whl | 1.12.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-12-14 |
+| tensorflow-1.12.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.12.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-12-14 |
 | tensorflow-1.10.0-cp36-cp36m-macosx\_10\_12\_x86_64.whl | 1.10.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-08-13 |
 | tensorflow-1.10.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.10.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-08-13 |
-| tensorflow-1.8.0-cp36-cp36m-macosx\_10\_12\_x86_64.whl | 1.8.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-08-01 |
-| tensorflow-1.8.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.8.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-08-01 |
-| tensorflow-1.8.0-cp36-cp36m-macosx\_10\_12\_x86_64.whl | 1.8.0 | 9.2 | 7.1 | 3.0,3.5,5.2,6.1 | 2018-07-30 |
-| tensorflow-1.8.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.8.0 | 9.2 | 7.1 | 3.0,3.5,5.2,6.1 | 2018-07-30 |
-| tensorflow-1.6.0-cp36-cp36m-macosx\_10\_12\_intel.whl | 1.6.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-04-23 |
-| tensorflow-1.6.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.6.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-04-23 |
 | ... |
 
 
