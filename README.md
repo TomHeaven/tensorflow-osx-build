@@ -13,6 +13,11 @@ Unfortunately, the Tensorflow team stops releasing binary package for Mac OS wit
 
 | FileName | Tensorflow  | CUDA | CUDNN | Compute Capability | Compilation Time |
 |:--:|:--:|:--:|:--:|:--:|:--:|
+| tensorflow-1.13.1-cp37-cp37m-macosx\_10\_13\_x86_64.whl | 1.13.1 | 10.0 | 7.4 | 3.5,5.2,6.1,7.0 | 2019-03-26 |
+| tensorflow-1.13.1-cp27-cp27m-macosx\_10\_13\_intel.whl | 1.13.1 | 10.0 | 7.4 | 3.5,5.2,6.1,7.0 | 2019-03-26 |
+| tensorflow-1.12.0-cp37-cp37m-macosx\_10\_13\_x86_64.whl | 1.12.0 | 10.0 | 7.4 | 3.0,3.5,5.2,6.1 | 2018-12-30 |
+| tensorflow-1.12.0-cp36-cp36m-macosx\_10\_12\_x86_64.whl | 1.12.0 | 10.0 | 7.4 | 3.0,3.5,5.2,6.1 | 2018-12-30 |
+| tensorflow-1.12.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.12.0 | 10.0 | 7.4 | 3.0,3.5,5.2,6.1 | 2018-12-30 |
 | tensorflow-1.12.0-cp37-cp37m-macosx\_10\_13\_x86_64.whl | 1.12.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-12-14 |
 | tensorflow-1.12.0-cp36-cp36m-macosx\_10\_12\_x86_64.whl | 1.12.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-12-14 |
 | tensorflow-1.12.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.12.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-12-14 |
