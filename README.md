@@ -99,4 +99,8 @@ Source code from: [https://github.com/tensorflow/tensorflow](https://github.com/
 
 If you need Pytorch builds for osx, go to this page: [https://github.com/TomHeaven/pytorch-osx-build](https://github.com/TomHeaven/pytorch-osx-build)
 
+If you need MxNet builds for osx, go to this page: [https://github.com/TomHeaven/mxnet_osx_build](https://github.com/TomHeaven/mxnet_osx_build)
+
 如果你需要Pytorch包，请看这个页面：[https://github.com/TomHeaven/pytorch-osx-build](https://github.com/TomHeaven/pytorch-osx-build)
+
+如果你需要MxNet包，请看这个页面：[https://github.com/TomHeaven/mxnet_osx_build](https://github.com/TomHeaven/mxnet_osx_build)
