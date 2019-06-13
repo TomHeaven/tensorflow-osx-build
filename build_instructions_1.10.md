@@ -20,23 +20,6 @@ I've found that build against CUDA 9.2 does not work properly, which keeps repor
 The following instructions will help you build your own wheel files for Python 2.7 and 3.6 using CUDA 9.0.
 
 
-+ download and configure `nccl`. Start a terminal and run
-
-```shell
-wget -q https://developer.download.nvidia.com/compute/redist/nccl/v2.1/nccl_2.2.13-1+cuda9.0_x86_64.txz
-cd nccl_2.2.13-1+cuda9.1_x86_64
-mkdir /usr/local/nccl
-cp -r * /usr/local/nccl
-# create symbolic links or TF will not find NCCL when linking
-cd /usr/local/nccl/lib
-ln -s -f libnccl.so.2.2.13 /usr/local/nccl/lib/libnccl.2.dylib 
-ln -s -f libnccl.so.2.2.13 /usr/local/nccl/lib/libnccl.2.2.13.dylib 
-# export the following variables so TF can find nccl
-export TF_NCCL_VERSION=2.2.13
-export NCCL_INSTALL_PATH=/usr/local/nccl
-```
-Note `nccl` does not work on Mac OS X. However, we need the files so that the configuration of Tensorflow works without errors. As we export temporary variables, the following commands should be executed in the same terminal.
-
 
 + download Tensorflow sources and switch to `v1.10.0`
 
@@ -136,8 +119,10 @@ No MPI support will be enabled for TensorFlow.
 + start building
 
 ```
-bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
+bazel build --config=opt --config=nonccl //tensorflow/tools/pip_package:build_pip_package
 ```
+Note `NCCL` only works on Linux now, which does not work on Mac OS X or Windows. We need to disable it by passing `--config=nonccl`, or you will meet NCCL related errors.
+
 + generate a wheel package
 ```
 bazel-bin/tensorflow/tools/pip_package/build_pip_package ./
