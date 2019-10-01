@@ -1,4 +1,4 @@
-# Tensorflow OSX Build Insructions (1.10)
+# Tensorflow OSX Build Tutorial (1.10)
 
 By `Tom Heaven` @ 2018.08.25
 

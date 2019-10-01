@@ -59,7 +59,7 @@ Enjoy!
 开始使用新版Tensorflow吧!
 
 # Build Tutorial
-If you want to build your own wheel packages, refer to the following Tutorials:
+If you want to build your own wheel packages, refer to the following tutorials:
 
 + [v1.10](https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_tutorial_1.10.md)
 + [v2.0.0](https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_tutorial_2.0.0.md)

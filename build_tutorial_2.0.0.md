@@ -1,4 +1,4 @@
-# Tensorflow OSX Build Insructions (v2.0.0)
+# Tensorflow OSX Build Tutorial (v2.0.0)
 
 By `Tom Heaven` @ 2019.10.01
 
@@ -6,7 +6,7 @@ Project page: [https://github.com/TomHeaven/tensorflow-osx-build](https://github
 
 ---
 
-Note patches for every release of Tensorflow is a different! So the instructions work for v2.0.0 only.
+Note patches for every release of Tensorflow is different! So the instructions work for v2.0.0 only.
 
 First make sure your XCode 9.4.1, CUDA 10.0 SDK and CUDNN 7.4 are properly installed, and Internet connection is also required. Install Python3 using `Homebrew` if you need to compile for Python3.
 
