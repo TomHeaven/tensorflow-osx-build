@@ -119,7 +119,7 @@ bazel build --config=opt --config=nonccl //tensorflow/tools/pip_package:build_pi
 Note `NCCL` only works on Linux now, which does not work on Mac OS X or Windows. We need to disable it by passing `--config=nonccl`, or you will meet NCCL related errors.
 
 + fix a source error in external sources. Previous building process will end with an error:
-+ 
+ 
 ```
 external/com_google_absl/absl/container/internal/compressed_tuple.h:170:53: error: use 'template' keyword to treat 'Storage' as a dependent template name
 return (std::move(*this).internal_compressed_tuple::Storage< CompressedTuple, I> ::get()); 
