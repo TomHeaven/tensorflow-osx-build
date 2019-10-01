@@ -11,22 +11,7 @@ Unfortunately, the Tensorflow team stops releasing binary package for Mac OS wit
 
 # Releases
 
-| FileName | Tensorflow  | CUDA | CUDNN | Compute Capability | Compilation Time |
-|:--:|:--:|:--:|:--:|:--:|:--:|
-| tensorflow-2.0.0b0-cp37-cp37m-macosx\_10\_13\_x86_64.whl | 2.0.0b0 | 10.0 | 7.4 | 3.0,3.5,5.0,5.2,6.1,7.0 | 2019-06-13 |
-| tensorflow-2.0.0b0-cp27-cp27m-macosx\_10\_13\_intel.whl | 2.0.0b0 | 10.0 | 7.4 | 3.0,3.5,5.0,5.2,6.1,7.0 | 2019-06-13 |
-| tensorflow-1.13.1-cp37-cp37m-macosx\_10\_13\_x86_64.whl | 1.13.1 | 10.0 | 7.4 | 3.5,5.2,6.1,7.0 | 2019-03-26 |
-| tensorflow-1.13.1-cp27-cp27m-macosx\_10\_13\_intel.whl | 1.13.1 | 10.0 | 7.4 | 3.5,5.2,6.1,7.0 | 2019-03-26 |
-| tensorflow-1.12.0-cp37-cp37m-macosx\_10\_13\_x86_64.whl | 1.12.0 | 10.0 | 7.4 | 3.0,3.5,5.2,6.1 | 2018-12-30 |
-| tensorflow-1.12.0-cp36-cp36m-macosx\_10\_12\_x86_64.whl | 1.12.0 | 10.0 | 7.4 | 3.0,3.5,5.2,6.1 | 2018-12-30 |
-| tensorflow-1.12.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.12.0 | 10.0 | 7.4 | 3.0,3.5,5.2,6.1 | 2018-12-30 |
-| tensorflow-1.12.0-cp37-cp37m-macosx\_10\_13\_x86_64.whl | 1.12.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-12-14 |
-| tensorflow-1.12.0-cp36-cp36m-macosx\_10\_12\_x86_64.whl | 1.12.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-12-14 |
-| tensorflow-1.12.0-cp27-cp27m-macosx\_10\_12\_intel.whl | 1.12.0 | 9.0 | 7 | 3.0,3.5,5.2,6.1 | 2018-12-14 |
-| ... |
-
-
-You can find older releases in the [releases page](https://github.com/TomHeaven/tensorflow-osx-build/releases).
+You can find releases in the [releases page](https://github.com/TomHeaven/tensorflow-osx-build/releases).
 
 你可以在[Releases页面](https://github.com/TomHeaven/tensorflow-osx-build/releases)找到以前发布的版本。
 
@@ -73,10 +58,11 @@ Enjoy!
 
 开始使用新版Tensorflow吧!
 
-# Build Instrctions
-If you want to build your own wheel packages, refer to the following instrctions:
+# Build Tutorial
+If you want to build your own wheel packages, refer to the following Tutorials:
 
-+ [v1.10](https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_instructions_1.10.md)
++ [v1.10](https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_tutorial_1.10.md)
++ [v2.0.0](https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_tutorial_2.0.0.md)
 
 # Patch
 There is a NCCL related BUG affecting Release 1.8. If you encounter such an error:
