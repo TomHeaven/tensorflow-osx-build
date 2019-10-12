@@ -10,8 +10,6 @@ Note patches for every release of Tensorflow is different! So the instructions w
 
 First make sure your XCode 9.4.1, CUDA 10.0 SDK and CUDNN 7.4 are properly installed, and Internet connection is also required. Install Python3 using `Homebrew` if you need to compile for Python3.
 
-If running on Mac OS High Sierra(10.13), you need to keep both XCode 8 (CUDA 9 SDK only supports this version) and XCode 9 (Homebrew requires this version) and switch between them by renaming.
-
 
 ## For Python 3.7
 The following instructions will help you build your own wheel files for Python 3.7 with CUDA 10.0.
