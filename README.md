@@ -59,8 +59,7 @@ Enjoy!
 If you want to build your own wheel packages, refer to the following tutorials:
 
 + [v1.10](https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_tutorial_1.10.md)
-+ [v2.0.0](https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_tutorial_2.0.0.md)
-
++ [v2.0.0](https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_tutorial_2.0.0.md) This tutorial also works for v1.15.0, just use source patch v1.15.0 instead of v2.0.0.
 
 # Source Code
 
