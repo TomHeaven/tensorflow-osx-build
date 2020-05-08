@@ -1,0 +1,256 @@
+diff --git a/configure b/configure
+index 66b66ba..e43908e 100755
+--- a/configure
++++ b/configure
+@@ -4,7 +4,7 @@ set -e
+ set -o pipefail
+ 
+ if [ -z "$PYTHON_BIN_PATH" ]; then
+-  PYTHON_BIN_PATH=$(which python || which python3 || true)
++  PYTHON_BIN_PATH=$(which python3 || which python || true)
+ fi
+ 
+ # Set all env variables
+diff --git a/tensorflow/core/kernels/conv_grad_filter_ops.cc b/tensorflow/core/kernels/conv_grad_filter_ops.cc
+index f9bf64f..eb9803c 100644
+--- a/tensorflow/core/kernels/conv_grad_filter_ops.cc
++++ b/tensorflow/core/kernels/conv_grad_filter_ops.cc
+@@ -839,10 +839,10 @@ void LaunchConv2DBackpropFilterOp<Eigen::GpuDevice, T>::operator()(
+           << " data_format=" << ToString(data_format)
+           << " compute_data_format=" << ToString(compute_data_format);
+ 
+-  constexpr auto kComputeInNHWC =
++  auto kComputeInNHWC =
+       std::make_tuple(se::dnn::DataLayout::kBatchYXDepth,
+                       se::dnn::FilterLayout::kOutputYXInput);
+-  constexpr auto kComputeInNCHW =
++  auto kComputeInNCHW =
+       std::make_tuple(se::dnn::DataLayout::kBatchDepthYX,
+                       se::dnn::FilterLayout::kOutputInputYX);
+ 
+diff --git a/tensorflow/core/kernels/conv_grad_input_ops.cc b/tensorflow/core/kernels/conv_grad_input_ops.cc
+index be5d821..dd17d4b 100644
+--- a/tensorflow/core/kernels/conv_grad_input_ops.cc
++++ b/tensorflow/core/kernels/conv_grad_input_ops.cc
+@@ -997,10 +997,10 @@ void LaunchConv2DBackpropInputOp<GPUDevice, T>::operator()(
+           << " data_format=" << ToString(data_format)
+           << " compute_data_format=" << ToString(compute_data_format);
+ 
+-  constexpr auto kComputeInNHWC =
++  auto kComputeInNHWC =
+       std::make_tuple(se::dnn::DataLayout::kBatchYXDepth,
+                       se::dnn::FilterLayout::kOutputYXInput);
+-  constexpr auto kComputeInNCHW =
++  auto kComputeInNCHW =
+       std::make_tuple(se::dnn::DataLayout::kBatchDepthYX,
+                       se::dnn::FilterLayout::kOutputInputYX);
+ 
+diff --git a/tensorflow/core/kernels/conv_ops.cc b/tensorflow/core/kernels/conv_ops.cc
+index d265e9d..354c9e9 100644
+--- a/tensorflow/core/kernels/conv_ops.cc
++++ b/tensorflow/core/kernels/conv_ops.cc
+@@ -863,10 +863,10 @@ void LaunchConv2DOp<GPUDevice, T>::operator()(
+       << "Negative row or col paddings: (" << common_padding_rows << ", "
+       << common_padding_cols << ")";
+ 
+-  constexpr auto kComputeInNHWC =
++  auto kComputeInNHWC =
+       std::make_tuple(se::dnn::DataLayout::kBatchYXDepth,
+                       se::dnn::FilterLayout::kOutputYXInput);
+-  constexpr auto kComputeInNCHW =
++  auto kComputeInNCHW =
+       std::make_tuple(se::dnn::DataLayout::kBatchDepthYX,
+                       se::dnn::FilterLayout::kOutputInputYX);
+ 
+diff --git a/tensorflow/core/kernels/data/experimental/snapshot_util.cc b/tensorflow/core/kernels/data/experimental/snapshot_util.cc
+index 391ece3..1df8c82 100644
+--- a/tensorflow/core/kernels/data/experimental/snapshot_util.cc
++++ b/tensorflow/core/kernels/data/experimental/snapshot_util.cc
+@@ -32,6 +32,12 @@ limitations under the License.
+ namespace tensorflow {
+ namespace data {
+ namespace experimental {
++// Tom Added to solve symbol not found error on macOS
++static constexpr const int64 kSnappyReaderInputBufferSizeBytes =
++    1 << 30;  // 1 GiB
++    // TODO(b/148804377): Set this in a smarter fashion.
++static constexpr const int64 kSnappyReaderOutputBufferSizeBytes =
++    32 << 20;  // 32 MiB
+ 
+ SnapshotWriter::SnapshotWriter(WritableFile* dest,
+                                const string& compression_type, int version,
+diff --git a/tensorflow/core/kernels/data/experimental/snapshot_util.h b/tensorflow/core/kernels/data/experimental/snapshot_util.h
+index a2df3cc..43eda32 100644
+--- a/tensorflow/core/kernels/data/experimental/snapshot_util.h
++++ b/tensorflow/core/kernels/data/experimental/snapshot_util.h
+@@ -70,11 +70,11 @@ class SnapshotReader {
+   // The reader input buffer size is deliberately large because the input reader
+   // will throw an error if the compressed block length cannot fit in the input
+   // buffer.
+-  static constexpr const int64 kSnappyReaderInputBufferSizeBytes =
+-      1 << 30;  // 1 GiB
++  //static constexpr const int64 kSnappyReaderInputBufferSizeBytes =
++  //    1 << 30;  // 1 GiB
+   // TODO(b/148804377): Set this in a smarter fashion.
+-  static constexpr const int64 kSnappyReaderOutputBufferSizeBytes =
+-      32 << 20;  // 32 MiB
++  //static constexpr const int64 kSnappyReaderOutputBufferSizeBytes =
++  //    32 << 20;  // 32 MiB
+   static constexpr const size_t kHeaderSize = sizeof(uint64);
+ 
+   static constexpr const char* const kClassName = "SnapshotReader";
+diff --git a/tensorflow/core/kernels/tridiagonal_solve_op_gpu.cu.cc b/tensorflow/core/kernels/tridiagonal_solve_op_gpu.cu.cc
+index 3825e29..c75fca7 100644
+--- a/tensorflow/core/kernels/tridiagonal_solve_op_gpu.cu.cc
++++ b/tensorflow/core/kernels/tridiagonal_solve_op_gpu.cu.cc
+@@ -40,7 +40,7 @@ static const char kNotInvertibleScalarMsg[] =
+     "The matrix is not invertible: it is a scalar with value zero.";
+ 
+ template <typename Scalar>
+-__global__ void SolveForSizeOneOrTwoKernel(const int m,
++__device__ void SolveForSizeOneOrTwoKernel(const int m,
+                                            const Scalar* __restrict__ diags,
+                                            const Scalar* __restrict__ rhs,
+                                            const int num_rhs,
+diff --git a/tensorflow/core/platform/tstring.h b/tensorflow/core/platform/tstring.h
+index 3fe1be2..515dbf7 100644
+--- a/tensorflow/core/platform/tstring.h
++++ b/tensorflow/core/platform/tstring.h
+@@ -15,7 +15,7 @@ limitations under the License.
+ 
+ #ifndef TENSORFLOW_CORE_PLATFORM_TSTRING_H_
+ #define TENSORFLOW_CORE_PLATFORM_TSTRING_H_
+-
++#include <functional> // Tom added
+ #include <assert.h>
+ 
+ #include <ostream>
+@@ -225,7 +225,7 @@ class tstring {
+   friend bool operator==(const std::string& a, const tstring& b);
+   friend tstring operator+(const tstring& a, const tstring& b);
+   friend std::ostream& operator<<(std::ostream& o, const tstring& str);
+-  friend std::hash<tstring>;
++  //friend struct std::hash<tstring>; //Tom modified
+ };
+ 
+ // Non-member function overloads
+diff --git a/tensorflow/core/util/gpu_device_functions.h b/tensorflow/core/util/gpu_device_functions.h
+index 7c54294..e648517 100644
+--- a/tensorflow/core/util/gpu_device_functions.h
++++ b/tensorflow/core/util/gpu_device_functions.h
+@@ -140,11 +140,11 @@ __device__ const unsigned kGpuWarpAll = 0xffffffff;
+ __device__ inline unsigned GpuLaneId() {
+   unsigned int lane_id;
+ #if GOOGLE_CUDA
+-#if __clang__
+-  return __nvvm_read_ptx_sreg_laneid();
+-#else   // __clang__
++//#if __clang__
++//  return __nvvm_read_ptx_sreg_laneid();
++//#else   // __clang__
+   asm("mov.u32 %0, %%laneid;" : "=r"(lane_id));
+-#endif  // __clang__
++//#endif  // __clang__
+ #elif TENSORFLOW_USE_ROCM
+   lane_id = __lane_id();
+ #endif
+diff --git a/tensorflow/core/util/gpu_kernel_helper.h b/tensorflow/core/util/gpu_kernel_helper.h
+index 51fd2a8..cff59b6 100644
+--- a/tensorflow/core/util/gpu_kernel_helper.h
++++ b/tensorflow/core/util/gpu_kernel_helper.h
+@@ -57,7 +57,8 @@ using gpuError_t = hipError_t;
+ #if GOOGLE_CUDA
+ 
+ #define GPU_DYNAMIC_SHARED_MEM_DECL(ALIGN, TYPE, NAME) \
+-  extern __shared__ __align__(ALIGN) TYPE NAME[]
++extern __shared__ TYPE NAME[]
++//  extern __shared__ __align__(ALIGN) TYPE NAME[]
+ 
+ #elif TENSORFLOW_USE_ROCM
+ 
+diff --git a/tensorflow/stream_executor/cuda/cuda_gpu_executor.cc b/tensorflow/stream_executor/cuda/cuda_gpu_executor.cc
+index 44bb359..6bb31fe 100644
+--- a/tensorflow/stream_executor/cuda/cuda_gpu_executor.cc
++++ b/tensorflow/stream_executor/cuda/cuda_gpu_executor.cc
+@@ -195,7 +195,7 @@ static string GetBinaryDir(bool strip_exe) {
+   _NSGetExecutablePath(nullptr, &buffer_size);
+   char unresolved_path[buffer_size];
+   _NSGetExecutablePath(unresolved_path, &buffer_size);
+-  CHECK_ERR(realpath(unresolved_path, exe_path) ? 1 : -1);
++  //CHECK_ERR(realpath(unresolved_path, exe_path) ? 1 : -1);
+ #else
+ #if defined(PLATFORM_WINDOWS)
+   HMODULE hModule = GetModuleHandle(NULL);
+diff --git a/third_party/gpus/cuda_configure.bzl b/third_party/gpus/cuda_configure.bzl
+index bdaaa4a..544d1c9 100644
+--- a/third_party/gpus/cuda_configure.bzl
++++ b/third_party/gpus/cuda_configure.bzl
+@@ -462,7 +462,7 @@ def _check_cuda_lib_params(lib, cpu_value, basedir, version, static = False):
+         _should_check_soname(version, static),
+     )
+ 
+-def _check_cuda_libs(repository_ctx, script_path, libs):
++def _check_cuda_libs_failed(repository_ctx, script_path, libs):
+     python_bin = get_python_bin(repository_ctx)
+     contents = repository_ctx.read(script_path).splitlines()
+ 
+@@ -476,6 +476,7 @@ def _check_cuda_libs(repository_ctx, script_path, libs):
+     cmd += "system('%s script.py %s');" % (python_bin, args)
+ 
+     all_paths = [path for path, _ in libs]
++    print('cmd %s' % cmd)
+     checked_paths = execute(repository_ctx, [python_bin, "-c", cmd]).stdout.splitlines()
+ 
+     # Filter out empty lines from splitting on '\r\n' on Windows
+@@ -483,6 +484,33 @@ def _check_cuda_libs(repository_ctx, script_path, libs):
+     if all_paths != checked_paths:
+         auto_configure_fail("Error with installed CUDA libs. Expected '%s'. Actual '%s'." % (all_paths, checked_paths))
+ 
++def _check_cuda_libs(repository_ctx, script_path, paths, check_soname = True):
++    """
++      Finds a library among a list of potential paths.
++      Args:
++        paths: List of paths to inspect.
++      Returns:
++        Returns the first path in paths that exist.
++    """
++    objdump = repository_ctx.which("objdump")
++    mismatches = []
++    for path in paths:
++        path = path[0]
++        print('mypath', path)
++        #if not path.exists:
++        #    continue
++        output = repository_ctx.execute([objdump, "-p", str(path)]).stdout
++        output = [line for line in output.splitlines() if "name @rpath/" in line]
++        sonames = [line.strip().split("/")[-1] for line in output]
++        sonames = [sonames[0].strip().split(" ")[0] for line in output]
++        return path
++
++    if mismatches:
++        auto_configure_fail(
++            "None of the libraries match their SONAME: " + ", ".join(mismatches),
++        )
++    auto_configure_fail("No library found under: " + ", ".join(paths))
++
+ def _find_libs(repository_ctx, check_cuda_libs_script, cuda_config):
+     """Returns the CUDA and cuDNN libraries on the system.
+ 
+@@ -498,7 +526,7 @@ def _find_libs(repository_ctx, check_cuda_libs_script, cuda_config):
+         Map of library names to structs of filename and path.
+       """
+     cpu_value = cuda_config.cpu_value
+-    stub_dir = "" if is_windows(repository_ctx) else "/stubs"
++    stub_dir = "" if is_windows(repository_ctx) else ""
+ 
+     check_cuda_libs_params = {
+         "cuda": _check_cuda_lib_params(
+@@ -826,7 +854,7 @@ def make_copy_dir_rule(repository_ctx, name, src_dir, out_dir):
+     outs = [
+ %s
+     ],
+-    cmd = \"""cp -rLf "%s/." "%s/" \""",
++    cmd = \"""cp -r -f "%s/." "%s/" \""",
+ )""" % (name, "\n".join(outs), src_dir, out_dir)
+ 
+ def _flag_enabled(repository_ctx, flag_name):
