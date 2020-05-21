@@ -12,7 +12,9 @@ You can find releases in the [releases page](https://github.com/TomHeaven/tensor
 
 你可以在[Releases页面](https://github.com/TomHeaven/tensorflow-osx-build/releases)找到以前发布的版本。
 
-# Sources
+# My Fork of Tensorflow
+
+Except for making patches for release verions of TF, I fork TF sources at [https://github.com/TomHeaven/tensorflow](https://github.com/TomHeaven/tensorflow) and keep fixing build issues of TF on macOS with CUDA. The corresponding PR is at: [https://github.com/tensorflow/tensorflow/pull/39297](https://github.com/tensorflow/tensorflow/pull/39297). You can use the PR to make your own builds.
 
 
 # Installation for Python 2.7
@@ -63,9 +65,7 @@ If you want to build your own wheel packages, refer to the following tutorials:
 + [v1.10](https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_tutorial_1.10.md)
 + [v2.0.0](https://github.com/TomHeaven/tensorflow-osx-build/blob/master/build_tutorial_2.0.0.md) This tutorial also works for v1.15.0, just use source patch v1.15.0 instead of v2.0.0.
 
-# My Fork of Tensorflow
 
-Instead of making patches for release verions of TF, I fork TF sources at [https://github.com/TomHeaven/tensorflow](https://github.com/TomHeaven/tensorflow) and keep fixing build issues of TF on macOS with CUDA. The corresponding PR is at: [https://github.com/tensorflow/tensorflow/pull/39297](https://github.com/tensorflow/tensorflow/pull/39297). You can use the PR to make your own builds.
 
 # Related Links
 
